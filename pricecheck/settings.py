@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'products',
-    # 'accounts',
+    'accounts',
     # 'sellers',
     'bootstrap3',
     # 'django.contrib.sites',
@@ -76,7 +76,7 @@ TEMPLATES = [
         },
     },
 ]
-WSGI_APPLICATION = 'price_management.wsgi.application'
+WSGI_APPLICATION = 'pricecheck.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
