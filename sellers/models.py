@@ -17,7 +17,7 @@ class Seller(models.Model):
     seller_logo = models.ImageField(upload_to='media/sellers',default=1)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class CreateSeller(models.Model):
@@ -38,6 +38,7 @@ class SellerProduct(models.Model):
     product_name = models.ForeignKey(Product)
     seller_name = models.ForeignKey(Seller)
     seller_price = models.IntegerField()
+    quantity = models.IntegerField()
     seller_product_image = models.ImageField(upload_to='media/sellers', default=1)
 
     def __str__(self):
@@ -58,7 +59,7 @@ class SellerProduct(models.Model):
 
 class CreateSellerProduct(models.Model):
     model = SellerProduct
-    fields = ['product_name', 'seller_name', 'seller_price', 'seller_product_image']
+    fields = ['product_name', 'seller_name','quantity', 'seller_price', 'seller_product_image']
 
 
 class SellerProductListView(models.Model):

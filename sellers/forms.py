@@ -23,4 +23,5 @@ class SellerProductForm(forms.ModelForm):
         product_name = forms.ForeignKey(Product)
         seller_name = forms.ForeignKey(Seller)
         seller_price = forms.IntegerField()
+        quantity = forms.IntegerField()
         seller_product_image = forms.ImageField(upload_to='media/sellers')
