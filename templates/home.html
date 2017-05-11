@@ -1,0 +1,53 @@
+{#{% extends 'base.html' %}#}
+{% load static from staticfiles %}
+
+{#{% block content %}#}
+{#    {% if request.user.is_authenticated %}#}
+
+
+<style type="text/css">
+    #search_block_top {
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'css/dataTables.bootstrap.min.css' %}"/>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet"/>
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+    <div id="search_block_top" align="center">
+        <div style="width: 550px; height: 100px; padding-top: 15% " id="search_block_top_wrap">
+            <h1 align="center"><p>PRICE CHECK <BR></p></h1>
+
+            <form id="searchbox" method="get"
+                  action="{% url 'products:products_landing' %}">
+                <input style="width: 500px; height: 40px" class="search_query form-control" type="text"
+                       id="search_query_top"
+                       placeholder="Enter Product" name="search"/><br/>
+                <div align="center">
+
+                    <button type="submit" class="btn btn-primary button-search">View Products</button>
+                    <button type="submit" class="btn btn-success button-search">Search Products</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<footer>
+    <a class="leftlinks" href="#">Price Management System</a>
+    <a class="rightlinks" href="#">Settings</a>
+    <a class="rightlinks" href="#">Privacy & Terms</a>
+</footer>
+
+</body>
+
+
+
