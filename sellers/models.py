@@ -40,7 +40,7 @@ class SellerProduct(models.Model):
     seller_price = models.IntegerField()
     quantity = models.IntegerField()
     category = models.ForeignKey(Category)
-    seller_product_image = models.ImageField(upload_to='media/sellers', default=1)
+    seller_product_image = models.ImageField(upload_to='media/sellers')
 
     def __str__(self):
         return str(self.product_name)

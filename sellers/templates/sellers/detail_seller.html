@@ -40,25 +40,42 @@
     </div>
 
     <hr>
-    <div id="showimage">
-{#    {% for product in object_list %}#}
-{#        <div class="col-sm-3">#}
-{#            <img class='img-responsive' src="../media/{{ product.image }}" width="150" height="113">#}
-{#            {{ product.product_name }}<br>Ug.Shs {{ product.price }}<br>{{ product.category }}#}
-{#        </div>#}
-{##}
-{##}
-{#    {% endfor %}#}
+    {#    <div id="showimage">#}
+    {##}
+    {#        {% for sellerproduct in seller_product_list %}#}
+    {##}
+    {#            <div class="col-sm-3">#}
+    {#                <img class='img-responsive' src="../media/{{ sellerproduct.seller_product_image }}" width="150"#}
+    {#                     height="113">#}
+    {#                {{ sellerproduct.product_name }}<br>Ug.Shs{{ sellerproduct.seller_price }} Each#}
+    {#                <br>{{ sellerproduct.category }}#}
+    {#            </div>#}
+    {##}
+    {#        {% endfor %}#}
+    {#    </div>#}
     {% for sellerproduct in seller_product_list %}
+        <div class="col-xs-6 col-md-3">
+            <div class="thumbnail">
+                <div class="caption">
+                    <a href="#">
+                        <img class='img-responsive' src="../media/{{ sellerproduct.seller_product_image }}"
+                             width="150"
+                             height="113">
+                    </a>
+                </div>
 
-        <div class="col-sm-3">
-            <img class='img-responsive' src="../media/{{ sellerproduct.seller_product_image }}" width="150"
-                 height="113">
-            {{ sellerproduct.product_name }}<br>Ug.Shs{{ sellerproduct.seller_price }} Each <br>{{ sellerproduct.category }}
+                <h3> {{ sellerproduct.product_name }}</h3>
+
+                <p> Ug.Shs{{ sellerproduct.seller_price }} Each
+                </p>
+                <p>{{ sellerproduct.category }}
+
+{#                <a href="#" class="btn btn-success" align="pull-right" role="button">More Details</a>#}
+                <a href="#" class="btn btn-success" align="pull-right"
+                   role="button"><span class="glyphicon glyphicon-plus"></span> More Details</a>
+            </div>
         </div>
-
     {% endfor %}
-    </div>
 
     {#    <div class="container">#}
     {#        <div class="row">#}
