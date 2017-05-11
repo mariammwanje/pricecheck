@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% load static from staticfiles %}
+
+{% block title %} Products List {% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <h1 align="center">Available Products</h1>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <div id="search_block_top" align="center">
+                    <div id="search_block_top_wrap">
+                        <form id="searchbox" method="get"
+                              action="{% url 'products:products_landing' %}">
+                            <input class="search_query form-control" type="text"
+                                   id="search_query_top"
+                                   placeholder="Search For Products" name="search"/>
+{#                            <button type="submit" class="btn btn-success button-search">Search Products</button>#}
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            {#            <button type="submit" class="btn btn-success button-search">Search Products</button>#}
+
+        </div>
+
+        {% for product in object_list %}
+            <div class="col-sm-3">
+                <br>
+                <img class='img-responsive' src="../media/{{ product.image }}" width="150" height="113">
+                {{ product.product_name }}<br>Ug.Shs {{ product.price }}<br>{{ product.category }}
+                </ul>
+            </div>
+
+
+        {% endfor %}
+    {% else %}
+        <a href="{% url 'accounts:login' %}">Login</a>
+    {% endif %}
+
+
+
+
+
+    {#    <div class="col-xs-12  ">#}
+    {#        <div class="col-xs-4 col-md-3">#}
+    {#            <div class="thumbnail">#}
+    {#                <div class="caption">#}
+    {#                    <a href="#">#}
+    {#                        <img src='{% static "img/printers.jpg" %}' alt="...">#}
+    {#                    </a>#}
+    {##}
+    {##}
+    {#                    <h3>Printers</h3>#}
+    {##}
+    {#                    <p>......</p>#}
+    {##}
+    {#                    <a href="#" class="btn btn-primary" role="button">More Details</a>#}
+    {##}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#        <div class="col-xs-4 col-md-3">#}
+    {#            <div class="thumbnail">#}
+    {#                <div class="caption">#}
+    {#                    <a href="#">#}
+    {#                        <img src='{% static "img/laptops.jpg" %}' alt="...">#}
+    {#                    </a>#}
+    {#                    <h3>Printers</h3>#}
+    {##}
+    {#                    <p>......</p>#}
+    {##}
+    {#                    <a href="#" class="btn btn-primary" role="button">More Details</a>#}
+    {##}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#        <div class="col-xs-4 col-md-3">#}
+    {#            <div class="thumbnail">#}
+    {#                <div class="caption">#}
+    {#                    <a href="#">#}
+    {#                        <img src='{% static "img/hp laptop.jpg" %}' alt="...">#}
+    {#                    </a>#}
+    {##}
+    {##}
+    {#                    <h3>Printers</h3>#}
+    {##}
+    {#                    <p>......</p>#}
+    {##}
+    {#                    <a href="#" class="btn btn-primary" role="button">More Details</a>#}
+    {##}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {##}
+    {#        <div class="col-xs-4 col-md-3">#}
+    {#            <div class="thumbnail">#}
+    {#                <div class="caption">#}
+    {#                    <a href="#">#}
+    {#                        <img src="{% static 'img/laptops.jpg' %}" alt="...">#}
+    {#                    </a>#}
+    {##}
+    {#                    <h3>Laptops</h3>#}
+    {##}
+    {#                    <p>...................</p>#}
+    {##}
+    {#                    <a href="#" class="btn btn-primary" role="button">More Details</a>#}
+    {##}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+
+{% endblock %}

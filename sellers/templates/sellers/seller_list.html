@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% load static from staticfiles %}
+
+{% block title %} Sellers {% endblock %}
+
+{% block content %}
+    <div class="page-header" align="center" xmlns="http://www.w3.org/1999/html">
+        <h2> System Sellers</h2>
+    </div>
+    <div class="container">
+
+
+        <div class="panel-body">
+            <div class="col-md-6">
+                <div id="search_block_top" align="center">
+                    <div id="search_block_top_wrap">
+
+                        <form id="searchbox" method="get"
+                              action="{% url 'sellers:seller_list' %}">
+                            <input class="search_query form-control" type="text"
+                                   id="search_query_top"
+                                   placeholder="Search For Seller" name="search"/><br/>
+                            {# <button type="submit" class="btn btn-success button-search">Search Products</button>#}
+                        </form>
+                    </div>
+                </div>
+
+                {#                <input type="text" class="form-control" id="dev-table-filter" data-action="filter"#}
+                {#                       data-filters="#dev-table" placeholder="Search For Sellers"/>#}
+            </div>
+            <div class="pull-right">
+                <a href="{% url 'sellers:add_seller' %}" align="pull-right"
+                   class="btn btn-primary"
+                   role="button"><span class="glyphicon glyphicon-plus"></span> Add Sellers </a>
+            </div>
+        </div>
+        <table class="table table-hover" id="dev-table">
+            <thead>
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Country</th>
+                <th>Contact Person</th>
+                <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for seller in seller_list %}
+                <tr>
+                    <td>
+                        {{ seller.id|capfirst }}
+                    </td>
+
+                    <td>
+                        {{ seller.name|capfirst }}
+                    </td>
+                    <td>
+                        {{ seller.contact|capfirst }}
+                    </td>
+                    <td>
+                        {{ seller.address|capfirst }}
+                    </td>
+
+                    <td>
+                        {{ seller.email|capfirst }}
+                    </td>
+                    <td>
+                        {{ seller.country|capfirst }}
+                    </td>
+
+                    <td>
+                        {{ seller.contact_person|capfirst }}
+                    </td>
+                    <td class="text-center">
+                        <a class='btn btn-info btn-xs'
+                           href="{% url 'sellers:edit_seller' seller.pk %}"><span
+                                class="glyphicon glyphicon-edit"></span> Edit
+                        </a>
+                        <a href="{% url 'sellers:delete_seller' seller.pk %}"
+                           class="btn btn-danger btn-xs"><span
+                                class="glyphicon glyphicon-remove"></span> Delete
+                        </a>
+                        <a href="{% url 'sellers:detail_seller' seller.pk %}"
+                           class="btn btn-danger btn-xs"><span
+                                class="glyphicon glyphicon-folder-open"></span> Details
+                        </a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

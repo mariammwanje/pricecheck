@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Product Variations {% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+
+    {% else %}
+        <a href="{% url 'accounts:login' %}">Login</a>
+    {% endif %}
+{% endblock %}

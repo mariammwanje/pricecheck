@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %} Add Variation{% endblock %}
+{% block content %}
+{% if request.user.is_authenticated %}
+    <h3>Add New Product Variation</h3>
+    <!--align="center"-->
+    <form method="post"  >
+        {% csrf_token %}
+        {% bootstrap_form form %}
+
+
+        <input type="submit" value="Add Variation" class="btn btn-primary">
+
+        <a href="#"class="btn btn-primary"> Cancel</a>
+    </form>
+{% else %}
+{% endif %}
+{% endblock %}
