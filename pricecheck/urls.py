@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^products/', include('products.urls', namespace='products')),
-    # url(r'^sellers/', include('sellers.urls', namespace='sellers')),
+    url(r'^sellers/', include('sellers.urls', namespace='sellers')),
     # #url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 ]
 urlpatterns += staticfiles_urlpatterns()

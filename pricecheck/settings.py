@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'products',
     'accounts',
-    # 'sellers',
+    'sellers',
     'bootstrap3',
     # 'django.contrib.sites',
     # 'allauth',
