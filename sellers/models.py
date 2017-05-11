@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-from products.models import Product
+from products.models import Product, Category
 
 
 # Create your models here.
@@ -39,6 +39,7 @@ class SellerProduct(models.Model):
     seller_name = models.ForeignKey(Seller)
     seller_price = models.IntegerField()
     quantity = models.IntegerField()
+    category = models.ForeignKey(Category)
     seller_product_image = models.ImageField(upload_to='media/sellers', default=1)
 
     def __str__(self):
@@ -59,7 +60,7 @@ class SellerProduct(models.Model):
 
 class CreateSellerProduct(models.Model):
     model = SellerProduct
-    fields = ['product_name', 'seller_name','quantity', 'seller_price', 'seller_product_image']
+    fields = ['product_name', 'seller_name','quantity', 'seller_price', 'category','seller_product_image']
 
 
 class SellerProductListView(models.Model):

@@ -77,7 +77,7 @@ class DetailSellerView(DetailView):
 
 class CreateSellerProductView(CreateView):
     model = SellerProduct
-    fields = ['seller_name', 'product_name', 'seller_price','quantity', 'seller_product_image']
+    fields = ['seller_name', 'product_name', 'seller_price','quantity', 'category', 'seller_product_image']
     template_name = 'sellers/seller_product_add.html'
     success_url = reverse_lazy('sellers:seller_product_list')
 

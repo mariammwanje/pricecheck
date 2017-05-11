@@ -41,20 +41,20 @@
 
     <hr>
     <div id="showimage">
-    {% for product in object_list %}
-        <div class="col-sm-3">
-            <img class='img-responsive' src="../media/{{ product.image }}" width="150" height="113">
-            {{ product.product_name }}<br>Ug.Shs {{ product.price }}<br>{{ product.category }}
-        </div>
-
-
-    {% endfor %}
+{#    {% for product in object_list %}#}
+{#        <div class="col-sm-3">#}
+{#            <img class='img-responsive' src="../media/{{ product.image }}" width="150" height="113">#}
+{#            {{ product.product_name }}<br>Ug.Shs {{ product.price }}<br>{{ product.category }}#}
+{#        </div>#}
+{##}
+{##}
+{#    {% endfor %}#}
     {% for sellerproduct in seller_product_list %}
 
         <div class="col-sm-3">
             <img class='img-responsive' src="../media/{{ sellerproduct.seller_product_image }}" width="150"
                  height="113">
-            {{ sellerproduct.product_name }}<br>Ug.Shs{{ sellerproduct.seller_price }}
+            {{ sellerproduct.product_name }}<br>Ug.Shs{{ sellerproduct.seller_price }} Each <br>{{ sellerproduct.category }}
         </div>
 
     {% endfor %}
