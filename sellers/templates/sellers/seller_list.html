@@ -30,9 +30,9 @@
                 {#                       data-filters="#dev-table" placeholder="Search For Sellers"/>#}
             </div>
             <div class="pull-right">
-                <a href="{% url 'sellers:add_seller' %}" align="pull-right"
-                   class="btn btn-primary"
-                   role="button"><span class="glyphicon glyphicon-plus"></span> Add Sellers </a>
+                <a href="{% url 'sellers:sellerproduct_list' %}" align="pull-right"
+                   class="btn btn-success"
+                   role="button"><span class="glyphicon glyphicon-plus"></span>Sellers Products List </a>
             </div>
         </div>
         <table class="table table-hover" id="dev-table">
@@ -77,12 +77,12 @@
                         {{ seller.contact_person|capfirst }}
                     </td>
                     <td class="text-center">
-                        <a class='btn btn-info btn-xs'
+                        <a class='btn btn-success btn-xs'
                            href="{% url 'sellers:edit_seller' seller.pk %}"><span
                                 class="glyphicon glyphicon-edit"></span> Edit
                         </a>
                         <a href="{% url 'sellers:delete_seller' seller.pk %}"
-                           class="btn btn-danger btn-xs"><span
+                           class="btn btn-primary btn-xs"><span
                                 class="glyphicon glyphicon-remove"></span> Delete
                         </a>
                         <a href="{% url 'sellers:detail_seller' seller.pk %}"

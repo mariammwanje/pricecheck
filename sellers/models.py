@@ -14,7 +14,7 @@ class Seller(models.Model):
     email = models.EmailField()
     country = models.CharField(max_length=100)
     contact_person = models.CharField(max_length=100)
-    seller_logo = models.ImageField(upload_to='media/sellers', default=1)
+    seller_logo = models.ImageField(upload_to='media/products', default=1)
 
     def __str__(self):
         return self.name
@@ -39,7 +39,7 @@ class SellerProduct(models.Model):
     seller_name = models.ForeignKey(Seller)
     seller_price = models.IntegerField()
     # seller_product_image = models.ImageField(upload_to='media/sellers', default=1)
-    image = models.ImageField(upload_to='media/sellers')
+    image = models.ImageField(upload_to='media/products')
 
     def __str__(self):
         return str(self.product_name)

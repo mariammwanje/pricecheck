@@ -85,26 +85,9 @@ class CreateSellerProductView(CreateView):
 #
 class ListSellerProductView(ListView):
     model = SellerProduct
-    # template_name = 'sellers/sellerproduct_list.html'
-    # queryset = Seller.objects.all()
+    template_name = 'sellers/sellerproduct_list.html'
 
-#
-#     def get_queryset(self, *args, **kwargs):
-#         sellerproduct_data = super(ListSellerProductView, self).get_queryset(*args, **kwargs)
-#         q = self.request.GET.get('search')
-#         if q:
-#             sellerproduct_data = self.model.objects.filter(Q(sellerproduct_name__icontains=q))
-#             print(sellerproduct_data)
-#             return sellerproduct_data
-#         print(sellerproduct_data)
-#         return sellerproduct_data
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(ListSellerProductView, self).get_context_data(**kwargs)
-#         context['now'] = timezone.now()
-#         return context
-#
-#
+# #
 # #
 # # class DeleteSellerProductView(DeleteView):
 # #     model = SellerProduct

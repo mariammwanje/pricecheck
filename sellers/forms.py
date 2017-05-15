@@ -15,7 +15,7 @@ class SellerForm(forms.ModelForm):
         email = forms.EmailField()
         country = forms.CharField(max_length=100)
         contact_person = forms.CharField(max_length=100)
-        seller_logo = forms.ImageField(upload_to='media/sellers')
+        seller_logo = forms.ImageField(upload_to='media/products')
 
 
 class SellerProductForm(forms.ModelForm):
@@ -23,4 +23,4 @@ class SellerProductForm(forms.ModelForm):
         product_name = forms.ForeignKey(Product)
         seller_name = forms.ForeignKey(Seller)
         seller_price = forms.IntegerField()
-        image = forms.ImageField(upload_to='media/sellers',  default=1)
+        image = forms.ImageField(upload_to='media/products',  default=1)
