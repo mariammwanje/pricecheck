@@ -45,12 +45,15 @@ class ProductImageListForm(forms.Model):
 class CategoryForm(forms.ModelForm):
     class Meta:
         category_name = forms.CharField(max_length=100)
+        description = forms.TextField(max_length=300)
+        image = forms.ImageField(upload_to="media/category")
+
 
 
 class CreateCategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ['category_name']
+        fields = ['category_name', 'image', 'description']
 
 
 class CategoryListViewForm(forms.ModelForm):

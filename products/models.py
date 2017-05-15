@@ -5,6 +5,8 @@ from django.db import models
 
 class Category(models.Model):
     category_name = models.CharField(max_length=100)
+    description = models.TextField(max_length=300)
+    image = models.ImageField(upload_to="media/category")
 
     def __str__(self):
         return self.category_name
@@ -12,7 +14,7 @@ class Category(models.Model):
 
 class CreateCategory(models.Model):
     model = Category
-    fields = ['category_name']
+    fields = ['category_name','image', 'description']
 
 
 class CategoryListView(models.Model):

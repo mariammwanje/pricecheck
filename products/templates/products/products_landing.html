@@ -34,7 +34,7 @@
 
                         </ul>
                     </li>
-                    <li><a href="#">PRODUCT CATEGORIES </a></li>
+                    <li><a href="{% url 'products:category_landing' %}">PRODUCT CATEGORIES </a></li>
 
                 </ul>
 
@@ -103,7 +103,7 @@
                 <p> Ug.Shs {{ product.price }} Each
                 </p>
                 {{ product.category }}
-                <a href="#" class="btn btn-success" align="pull-right"
+                <a href="{% url 'products:products_details' product.pk %}" class="btn btn-success" align="pull-right"
                    role="button"><span class="glyphicon glyphicon-plus"></span> More Details</a>
                 {#                <a href="#" class="btn btn-success" role="button">More Details</a>#}
 

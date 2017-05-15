@@ -3,6 +3,7 @@
 from django.db.models import Q
 from django.urls import reverse_lazy
 from django.utils import timezone
+from django.views.generic import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
@@ -14,8 +15,6 @@ class CreateProductView(CreateView):
     fields = ['product_name', 'price', 'quantity', ' category', 'image']
     success_url = reverse_lazy("products:products_landing")
     template_name = 'products/create_products'
-
-
 
 
 class ProductListView(ListView):
@@ -40,6 +39,12 @@ class ProductListView(ListView):
         return context
 
 
+class ProductDetailView(DetailView):
+    model = Product
+    success_url = reverse_lazy("products:products_landing")
+    template_name = 'products/products_details.html'
+
+
 class CreateProductImage(CreateView):
     model = ProductImage
     fields = ['product_id', 'img']
@@ -50,15 +55,18 @@ class ProductImageList(ListView):
     fields = ['product_id', 'img']
 
 
-class CreateCategory(CreateView):
+class CreateCategoryView(CreateView):
     model = Category
-    fields = ['category_name']
+    fields = ['category_name', 'description', 'image']
     success_url = reverse_lazy("products:category_landing")
-    template_name = 'products/create_category'
+    template_name = 'products/create_category.html'
 
 
 class CategoryListView(ListView):
     model = Category
+    fields = ['category_name', 'description', 'image']
+    success_url = reverse_lazy("products:category_landing")
+    template_name = 'products/category_landing.html'
 
 
 class CreateProductVariations(CreateView):
