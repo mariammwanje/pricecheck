@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'products',
-    'accounts',
+    # 'accounts',
     'sellers',
     'bootstrap3',
     'django.contrib.sites',

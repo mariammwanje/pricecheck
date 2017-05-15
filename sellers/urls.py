@@ -12,6 +12,6 @@ urlpatterns = [url(r'sellers/add/$', views.CreateSellerView.as_view(), name='add
     url(r'^$', views.ListSellerProductView.as_view(), name='seller_product_list'),
     # url(r'sellersproducts/(?P<pk>\d+)/delete/$', views.DeleteSellerProductView.as_view(), name='seller_product_delete'),
     # url(r"sellersproducts/(?P<pk>\d+)/edit/$", views.UpdateSellerProductView.as_view(), name='seller_product_edit'),
-    # url(r"sellersproducts/(?P<pk>\d+)details/$", views.DetailSellerProductView.as_view(), name='seller_product_detail'),
+   # url(r"sellersproducts/(?P<pk>\d+)details/$", views.DetailSellerProductView.as_view(), name='seller_product_detail'),
     #
 ]
