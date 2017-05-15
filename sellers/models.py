@@ -39,25 +39,25 @@ class SellerProduct(models.Model):
     seller_name = models.ForeignKey(Seller)
     seller_price = models.IntegerField()
     # seller_product_image = models.ImageField(upload_to='media/sellers', default=1)
-    image = models.ImageField(upload_to='media/products')
-#
-#     def __str__(self):
-#         return str(self.product_name)
-#
-#     def get_price(self):
-#         return str(self.seller_name)
-#
-#     def get_price(self):
-#         return str(self.seller_price)
-#
-#     def get_absolute_url(self):
-#         return reverse("seller_product_list")
-#
-#     def get_image_url(self):
-#         img = self.sellerproduct_image_set.first()
-#         if img:
-#             return img.image.url
-#         return img
+    image = models.ImageField(upload_to='media/sellers')
+
+    def __str__(self):
+        return str(self.product_name)
+
+    def get_price(self):
+        return str(self.seller_name)
+
+    def get_price(self):
+        return str(self.seller_price)
+
+    def get_absolute_url(self):
+        return reverse("sellerproduct_list")
+
+    def get_image_url(self):
+        img = self.sellerproduct_image_set.first()
+        if img:
+            return img.image.url
+        return img
 #
 #
 class CreateSellerProduct(models.Model):

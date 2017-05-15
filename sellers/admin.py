@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Seller
+from .models import Seller, SellerProduct
 
 
 class SellerAdmin(admin.ModelAdmin):
@@ -13,5 +13,5 @@ class SellerAdmin(admin.ModelAdmin):
         model = Seller
 
 admin.site.register(Seller)
-# admin.site.register(SellerProduct)
+admin.site.register(SellerProduct)
 

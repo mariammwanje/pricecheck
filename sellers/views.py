@@ -85,7 +85,7 @@ class CreateSellerProductView(CreateView):
 #
 class ListSellerProductView(ListView):
     model = SellerProduct
-    template_name = 'sellers/sellerproduct_list.html'
+    # template_name = 'sellers/sellerproduct_list.html'
     # queryset = Seller.objects.all()
 
 #
