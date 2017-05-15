@@ -14,7 +14,7 @@ class Category(models.Model):
 
 class CreateCategory(models.Model):
     model = Category
-    fields = ['category_name','image', 'description']
+    fields = ['category_name', 'image', 'description']
 
 
 class CategoryListView(models.Model):
