@@ -24,12 +24,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    {#                    <li class="active"><a href="#">SELLERS<span class="sr-only">(current)</span></a></li>#}
+                    <li><a href="#">SELLERS PRODUCTS</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">SELLERS<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{% url 'sellers:seller_list' %}">SUPERMARKETS</a></li>
+                            <li><a href="{% url 'sellers:seller_list' %}">SUPERMARKETS LIST</a></li>
                             <li><a href="#">LOCAL MARKETS</a></li>
 
                         </ul>
@@ -48,7 +48,7 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                  
+
                     <form id="searchbox" method="get"
                           action="{% url 'products:products_landing' %}" class="navbar-form navbar-left">
                         <div class="form-group"><input style="width: 250px; height: 40px"
