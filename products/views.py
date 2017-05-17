@@ -71,7 +71,7 @@ class CategoryListView(ListView):
 
 class CreateProductVariations(CreateView):
     model = ProductVariations
-    fields = ['product_type', 'variation_name', ' sale_prices', ' price']
+    fields = ['product_type', 'var_name', 'var_price', ' sales_price', 'active']
     success_url = reverse_lazy("products:create_variations")
     template_name = 'products/product_variations_landing.html'
 

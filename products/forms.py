@@ -64,15 +64,16 @@ class CategoryListViewForm(forms.ModelForm):
 class ProductVariationsForm(forms.ModelForm):
     class Meta:
         product_type = forms.ForeignKey(Product)
-        variation_name = forms.CharField(max_length=100)
-        sale_prices = forms.IntegerField()
-        price = forms.IntegerField()
+        var_name = forms.CharField(max_length=100)
+        var_price = forms.DecimalField(decimal_places=2, max_digits=20, null=True, blank=True)
+        sales_price = forms.DecimalField(decimal_places=2, max_digits=20, null=True, blank=True)
+        active = forms.BooleanField(default=True)
 
 
 class CreateProductVariationsForm(forms.ModelForm):
     class Meta:
         model = ProductVariations
-        fields = ['product_type', 'variation_name', ' sale_prices', ' price']
+        fields = ['product_type', 'var_name', 'var_price', ' sales_price', 'active']
 
 
 class ProductVariationsListViewForm(forms.ModelForm):
