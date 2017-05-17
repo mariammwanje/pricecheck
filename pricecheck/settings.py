@@ -30,16 +30,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
     'products',
-    # 'accounts',
+    'accounts',
     'sellers',
     'bootstrap3',
     'django.contrib.sites',
     'allauth',
-    # 'allauth.account',
+    'allauth.account',
     'django.contrib.admin',
     'django.contrib.auth',
-    # 'datatables',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',

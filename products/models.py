@@ -72,17 +72,25 @@ class ProductImageList(models.Model):
 
 class ProductVariations(models.Model):
     product_type = models.ForeignKey(Product)
-    variation_name = models.CharField(max_length=100)
-    sale_prices = models.IntegerField()
-    price = models.IntegerField()
+    var_name = models.CharField(max_length=100)
+    var_price = models.DecimalField(decimal_places=2, max_digits=20, null=True, blank=True)
+    sales_price = models.DecimalField(decimal_places=2, max_digits=20, null=True, blank=True)
 
-    def __str__(self):
+    active = models.BooleanField(default=True)
+
+    def __unicode__(self):
         return str(self.product_type)
+#checking to return var price if sales price is not None
+    def get_price(self):
+        if self.sales_price is not None:
+            return self.sales_price
+        else:
+            return self.var_price
 
 
 class CreateProductVariations(models.Model):
     model = ProductVariations
-    fields = ['product_type', 'variation_name', ' sale_prices', ' price']
+    fields = ['product_type', 'var_name', 'var_price', ' sales_price', 'active']
 
 
 class ProductVariationsListView(models.Model):

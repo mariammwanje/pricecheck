@@ -20,7 +20,7 @@ class SellerForm(forms.ModelForm):
 
 class SellerProductForm(forms.ModelForm):
     class Meta:
-        product_name = forms.ForeignKey(Product)
+        name_product = forms.ForeignKey(Product)
         seller_name = forms.ForeignKey(Seller)
         seller_price = forms.IntegerField()
         image = forms.ImageField(upload_to='media/products',  default=1)

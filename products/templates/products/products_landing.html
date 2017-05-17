@@ -5,115 +5,77 @@
 {% block title %} Products List {% endblock %}
 
 {% block content %}
-    {#    {% if request.user.is_authenticated %}#}
-    <h1 align="center">Available Products</h1>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                {#                <a class="navbar-brand" href="#">Brand</a>#}
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="{% url 'sellers:sellerproduct_list' %}">SELLERS PRODUCTS</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">SELLERS<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{% url 'sellers:seller_list' %}">SUPERMARKETS LIST</a></li>
-                            <li><a href="#">LOCAL MARKETS</a></li>
-
-                        </ul>
-                    </li>
-                    <li><a href="{% url 'products:category_landing' %}">PRODUCT CATEGORIES </a></li>
-
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-
-                    <form id="searchbox" method="get"
-                          action="{% url 'products:products_landing' %}" class="navbar-form navbar-left">
-                        <div class="form-group"><input style="width: 250px; height: 40px"
-                                                       class="search_query form-control" type="text"
-                                                       id="search_query_top"
-                                                       placeholder="Enter Product" name="search"/></div>
-                        <button type="submit" class="btn btn-success button-search">Search Products</button>
-                    </form>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-    {##}
-    {#<hr>#}
-    {#<div class="container">#}
-    {##}
-    {#    <ul class="nav navbar-nav navbar-centered">#}
-    {#        <li><a href="# "></i> SELLERS </a></li>#}
-    {#        <li>#}
-    {#            <div class="panel-body">#}
-    {#                <div class="col-md-12">#}
-    {#                    <div id="search_block_top" align="center">#}
-    {#                        <div id="search_block_top_wrap">#}
-    {#                            <form id="searchbox" method="get"#}
-    {#                                  action="{% url 'products:products_landing' %}">#}
-    {#                                <input class="search_query form-control" type="text"#}
-    {#                                       id="search_query_top"#}
-    {#                                       placeholder="Search For Products" name="search"/>#}
-    {#                                <button type="submit" class="btn btn-success button-search">Search Products</button>#}
-    {#                            </form>#}
-    {#                        </div>#}
-    {#                    </div>#}
-    {##}
-    {#                </div>#}
-    {#            </div>#}
-    {#        </li>#}
-    {##}
-    {#    </ul>#}
-    {#</div>#}
-    {##}
-    {#<hr>#}
-    {#        {% for product in object_list %}#}
-    {#        <div class="col-sm-3">#}
-    {#            <br>#}
-    {#            <img class='img-responsive' src="../media/{{ product.image }}" width="150" height="113">#}
-    {#            {{ product.product_name }}<br>Ug.Shs {{ product.price }} Each<br>{{ product.category }}#}
-    {#            </ul>#}
-    {#        </div>#}
-    {#        {% endfor %}#}
-    {% for product in object_list %}
-        <div class="col-xs-6 col-md-3">
-            <div class="thumbnail">
-                <div class="caption">
-                    <a href="#">
-                        <img class='img-responsive' src="../media/{{ product.image }}" width="150" height="113">
-                    </a>
+    {% if request.user.is_authenticated %}
+        <h1 align="center">Available Products</h1>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    {#                <a class="navbar-brand" href="#">Brand</a>#}
                 </div>
 
-                <h3> {{ product.product_name }}</h3>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'sellers:sellerproduct_list' %}">SELLERS PRODUCTS</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true"
+                               aria-expanded="false">SELLERS<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'sellers:seller_list' %}">SUPERMARKETS LIST</a></li>
+                                <li><a href="#">LOCAL MARKETS</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'products:category_landing' %}">PRODUCT CATEGORIES </a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <form id="searchbox" method="get"
+                              action="{% url 'products:products_landing' %}" class="navbar-form navbar-left">
+                            <div class="form-group"><input style="width: 250px; height: 40px"
+                                                           class="search_query form-control" type="text"
+                                                           id="search_query_top"
+                                                           placeholder="Enter Product" name="search"/></div>
+                            <button type="submit" class="btn btn-success button-search">Search Products</button>
+                        </form>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
 
-                <p> Ug.Shs {{ product.price }} Each
-                </p>
-                {{ product.category }}
-                <a href="{% url 'products:products_details' product.pk %}" class="btn btn-success" align="pull-right"
-                   role="button"><span class="glyphicon glyphicon-plus"></span> More Details</a>
-                {#                <a href="#" class="btn btn-success" role="button">More Details</a>#}
+        {% for product in object_list %}
+            <div class="col-xs-6 col-md-3">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <a href="#">
+                            <img class='img-responsive' src="{{ product.image.url }}" width="150" height="113">
+                        </a>
+                    </div>
 
+                    <h3> {{ product.product_name }}</h3>
+
+                    <p> Ug.Shs {{ product.price }} Each
+                    </p>
+                    {{ product.category }}
+                    <a href="{% url 'products:products_details' product.pk %}" class="btn btn-success"
+                       align="pull-right"
+                       role="button"><span class="glyphicon glyphicon-send"></span> More Details</a>
+                    {#                <a href="#" class="btn btn-success" role="button">More Details</a>#}
+
+                </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
 
-    {#    {% else %}#}
-    {#        <a href="{% url 'accounts:login' %}">Login</a>#}
-    {#    {% endif %}#}
+    {% else %}
+        <a href="{% url 'accounts:login' %}">Login</a>
+    {% endif %}
 
 
 {% endblock %}

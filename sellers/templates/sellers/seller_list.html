@@ -13,21 +13,18 @@
 
         <div class="panel-body">
             <div class="col-md-6">
-                <div id="search_block_top" align="center">
+                <div id="search_block_top">
                     <div id="search_block_top_wrap">
-
                         <form id="searchbox" method="get"
-                              action="{% url 'sellers:seller_list' %}">
-                            <input class="search_query form-control" type="text"
-                                   id="search_query_top"
-                                   placeholder="Search For Seller" name="search"/><br/>
-                            {# <button type="submit" class="btn btn-success button-search">Search Products</button>#}
+                              action="{% url 'sellers:seller_list' %}" class="navbar-form navbar-left">
+                        <div class="form-group"><input style="width: 250px; height: 40px"
+                                    class="search_query form-control" type="text"
+                                    id="search_query_top"
+                                    placeholder="Enter Seller Name" name="search"/></div>
+                            <button type="submit" class="btn btn-success button-search">Search For Sellers</button>
                         </form>
                     </div>
                 </div>
-
-                {#                <input type="text" class="form-control" id="dev-table-filter" data-action="filter"#}
-                {#                       data-filters="#dev-table" placeholder="Search For Sellers"/>#}
             </div>
             <div class="pull-right">
                 <a href="{% url 'sellers:sellerproduct_list' %}" align="pull-right"
@@ -35,6 +32,8 @@
                    role="button"><span class="glyphicon glyphicon-plus"></span>Sellers Products List </a>
             </div>
         </div>
+
+
         <table class="table table-hover" id="dev-table">
             <thead>
             <tr>

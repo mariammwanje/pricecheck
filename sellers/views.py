@@ -81,28 +81,22 @@ class CreateSellerProductView(CreateView):
     success_url = reverse_lazy('sellers:sellerproduct_list')
 
 
-#
-#
 class ListSellerProductView(ListView):
     model = SellerProduct
     template_name = 'sellers/sellerproduct_list.html'
+    queryset = SellerProduct.objects.all()
 
-# #
-# #
-# # class DeleteSellerProductView(DeleteView):
-# #     model = SellerProduct
-# #     success_url = reverse_lazy('sellers:seller_product_list')
-# #     template_name = 'sellers/seller_product_delete.html'
-# #
-# #
-# # class UpdateSellerProductView(UpdateView):
-# #     model = SellerProduct
-# #     fields = ['seller_name', 'product_name', 'seller_price']
-# #     success_url = reverse_lazy('sellers:seller_product_list')
-# #     template_name = 'sellers/seller_product_edit.html'
-# #
-# #
-# # class DetailSellerProductView(DetailView):
-# #     model = Seller
-# #     success_url = reverse_lazy('sellers:seller_product_list')
-# #     #template_name = 'sellers/seller_detail.html'
+    def get_queryset(self, *args, **kwargs):
+        sellerproduct_data = super(ListSellerProductView, self).get_queryset(*args, **kwargs)
+        q = self.request.GET.get('search')
+        if q:
+            sellerproduct_data = self.model.objects.filter(Q(name_product__icontains=q))
+            print(sellerproduct_data)
+            return sellerproduct_data
+        print(sellerproduct_data)
+        return sellerproduct_data
+
+    def get_context_data(self, **kwargs):
+        context = super(ListSellerProductView, self).get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context

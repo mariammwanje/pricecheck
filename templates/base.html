@@ -2,7 +2,7 @@
 {% load static from staticfiles %}
 
 
-{#{% if request.user.is_authenticated %}#}
+{% if request.user.is_authenticated %}
 
 
 <html lang="en">
@@ -29,18 +29,20 @@
                 <li>
                     <a href="{% url 'products:products_landing' %}" align="pull-right" >Home</a>
                 </li>
-                  <li>
-                    <a href="#" align="pull-right"
-                    ><span class="glyphicon glyphicon-search"></span> Store Locator</a>
-                </li>
+
                 <li>
-                    <a href="#" align="pull-right"
+                    <a href="{% url 'accounts:signup' %}" align="pull-right"
                     ><span class="glyphicon glyphicon-plus"></span> Create Account</a>
                 </li>
                 <li>
-                    <a href="#" align="pull-right"
+                    <a href="{% url 'accounts:login' %}" align="pull-right"
                     ><span class="glyphicon glyphicon-plus"></span> Sign In</a>
                 </li>
+                 <li>
+                    <a href="{% url 'accounts:logout' %}" align="pull-right"
+                    ><span class="glyphicon glyphicon-plus"></span> Log out</a>
+                </li>
+
             </ul>
         </div>
     </div>
@@ -68,8 +70,8 @@
 
 </body>
 </html>
-{#{% else %}#}
-{#    <a href="{% url 'accounts:login' %}">Login</a>#}
-{#{% endif %}#}
+{% else %}
+    <a href="{% url 'accounts:login' %}">Login</a>
+{% endif %}
 
 

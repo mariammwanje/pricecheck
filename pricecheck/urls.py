@@ -19,16 +19,17 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-
-from pricecheck.views import HomeView
+from pricecheck import views
+# from pricecheck.views import HomeView
 
 urlpatterns = [
-    # url(r'^$', views.home, name='home'),
-    url(r'^$', HomeView.as_view(), name='home'),
+    url(r'^$', views.home, name='home'),
+    # url(r'^$', views.HomeView.as_view(), name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^products/', include('products.urls', namespace='products')),
     url(r'^sellers/', include('sellers.urls', namespace='sellers')),
-    # url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+
 ]
 urlpatterns += staticfiles_urlpatterns()
 if settings.DEBUG:

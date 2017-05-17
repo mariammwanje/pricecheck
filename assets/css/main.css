@@ -1,3 +1,7 @@
+.row-padding {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
 .navbar-static-top {
     margin-bottom: 20px;
 }

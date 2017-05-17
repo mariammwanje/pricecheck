@@ -3,9 +3,11 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+
+
+    # url(r'^$', views.ListSellerProductView.as_view(), name='sellerproduct_list'),
     url(r'sellersproducts/add/$', views.CreateSellerProductView.as_view(), name='sellerproduct_add'),
     url(r'sellersproducts/$', views.ListSellerProductView.as_view(), name='sellerproduct_list'),
-
 
     url(r'sellers/add/$', views.CreateSellerView.as_view(), name='add_seller'),
     url(r'^$', views.ListSellerView.as_view(), name='seller_list'),
