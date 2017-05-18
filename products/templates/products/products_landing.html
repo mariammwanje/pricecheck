@@ -34,6 +34,8 @@
                                 <li><a href="#">LOCAL MARKETS</a></li>
                             </ul>
                         </li>
+                        <li><a href="{% url 'products:product_variations_landing' %}">PRODUCT VARIATIONS</a></li>
+
                         <li><a href="{% url 'products:category_landing' %}">PRODUCT CATEGORIES </a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -59,11 +61,11 @@
                         </a>
                     </div>
 
-                    <h3> {{ product.product_name }}</h3>
+                    <h3>{{ product.product_name }}</h3>
+                    <h4> {{ product.description }}</h4>
 
-                    <p> Ug.Shs {{ product.price }} Each
                     </p>
-                    {{ product.category }}
+                    <h5>{{ product.category }}</h5>
                     <a href="{% url 'products:products_details' product.pk %}" class="btn btn-success"
                        align="pull-right"
                        role="button"><span class="glyphicon glyphicon-send"></span> More Details</a>

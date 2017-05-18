@@ -12,7 +12,7 @@ from products.models import Product, Category, ProductVariations, ProductImage
 
 class CreateProductView(CreateView):
     model = Product
-    fields = ['product_name', 'price', 'quantity', ' category', 'image']
+    fields = ['product_name', 'price', 'quantity','description', ' category', 'image']
     success_url = reverse_lazy("products:products_landing")
     template_name = 'products/create_products'
 
@@ -78,3 +78,5 @@ class CreateProductVariations(CreateView):
 
 class ProductVariationsListView(ListView):
     model = ProductVariations
+    template_name = 'products/product_variations_landing.html'
+

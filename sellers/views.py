@@ -76,7 +76,8 @@ class DetailSellerView(DetailView):
 #
 class CreateSellerProductView(CreateView):
     model = SellerProduct
-    fields = ['seller_name', 'product_name', 'seller_price', 'image']
+    fields = ['seller_name', 'name_product', 'seller_price', 'image'
+              ]
     template_name = 'sellers/sellerproduct_add.html'
     success_url = reverse_lazy('sellers:sellerproduct_list')
 
@@ -88,12 +89,12 @@ class ListSellerProductView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         sellerproduct_data = super(ListSellerProductView, self).get_queryset(*args, **kwargs)
-        q = self.request.GET.get('search')
+        q = self.request.GET.get('search_seller')
         if q:
-            sellerproduct_data = self.model.objects.filter(Q(name_product__icontains=q))
-            print(sellerproduct_data)
+            sellerproduct_data = self.model.objects.filter(
+                Q(name_product__product_name__icontains=q)|
+                Q(seller_name__name__icontains=q))
             return sellerproduct_data
-        print(sellerproduct_data)
         return sellerproduct_data
 
     def get_context_data(self, **kwargs):

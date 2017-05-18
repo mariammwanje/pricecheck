@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django import forms
 
-from products.models import Product
+from products.models import Product, ProductVariations
 from sellers.models import Seller
 
 
@@ -24,3 +24,4 @@ class SellerProductForm(forms.ModelForm):
         seller_name = forms.ForeignKey(Seller)
         seller_price = forms.IntegerField()
         image = forms.ImageField(upload_to='media/products',  default=1)
+

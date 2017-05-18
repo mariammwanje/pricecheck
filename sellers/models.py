@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-from products.models import Product
+from products.models import Product, ProductVariations
 
 
 # Create your models here.
@@ -14,24 +14,11 @@ class Seller(models.Model):
     email = models.EmailField()
     country = models.CharField(max_length=100)
     contact_person = models.CharField(max_length=100)
+
     # seller_logo = models.ImageField(upload_to='media/products', default=1)
 
     def __str__(self):
         return self.name
-
-
-class CreateSeller(models.Model):
-    model = Seller
-    fields = ['name', 'contact', 'address', 'email', 'country', 'contact_person']
-
-
-class UpdateSeller(models.Model):
-    model = Seller
-    fields = ['name', 'contact', 'address', 'email', 'country', 'contact_person', 'seller_logo']
-
-
-class SellerList(models.Model):
-    model = Seller
 
 
 class SellerProduct(models.Model):
@@ -43,9 +30,6 @@ class SellerProduct(models.Model):
 
     def __str__(self):
         return str(self.name_product)
-
-    def get_price(self):
-        return str(self.seller_name)
 
     def get_price(self):
         return str(self.seller_price)
@@ -60,14 +44,5 @@ class SellerProduct(models.Model):
         return img
 
 
-#
-#
-class CreateSellerProduct(models.Model):
-    model = SellerProduct
-    fields = ['name_product', 'seller_name', 'seller_price', 'image']
-
-
-#
-#
-class SellerProductListView(models.Model):
-    model = SellerProduct
+class SellerProductVariation(models.Model):
+    pass

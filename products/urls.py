@@ -11,4 +11,8 @@ urlpatterns = [
     url(r"create$", views.CreateCategoryView.as_view(), name='create_category'),
     url(r"list$", views.CategoryListView.as_view(), name='category_landing'),
 
+    #product variations
+    url(r'variations/$', views.ProductVariationsListView.as_view(), name='product_variations_landing'),
+    url(r"create_variations/$", views.CreateProductVariations.as_view(), name='create_variations'),
+
 ]

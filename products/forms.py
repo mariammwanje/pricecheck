@@ -10,6 +10,8 @@ class ProductForm(forms.Model):
         product_name = forms.CharField(max_length=100)
         price = forms.IntegerField()
         quantity = forms.CharField(max_length=20)
+        description = forms.TextField(max_length=500)
+
         category = forms.ForeignKey(Category)
         image = forms.ImageField(upload_to='media/products', default=1)
 
@@ -17,7 +19,7 @@ class ProductForm(forms.Model):
 class ProductCreateForm(forms.Model):
     class Meta:
         model = Product
-        fields = ['product_name', 'price', 'quantity', 'category', 'image']
+        fields = ['product_name', 'price', 'quantity', 'description', 'category', 'image']
 
 
 class ProductListViewForm(forms.ModelForm):
@@ -49,7 +51,6 @@ class CategoryForm(forms.ModelForm):
         image = forms.ImageField(upload_to="media/category")
 
 
-
 class CreateCategoryForm(forms.ModelForm):
     class Meta:
         model = Category
@@ -73,7 +74,8 @@ class ProductVariationsForm(forms.ModelForm):
 class CreateProductVariationsForm(forms.ModelForm):
     class Meta:
         model = ProductVariations
-        fields = ['product_type', 'var_name', 'var_price', ' sales_price', 'active']
+        fields = ['product_type', 'var_name', 'var_price',
+                  ' sales_price', 'active']
 
 
 class ProductVariationsListViewForm(forms.ModelForm):

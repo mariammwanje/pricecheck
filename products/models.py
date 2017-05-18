@@ -12,19 +12,11 @@ class Category(models.Model):
         return self.category_name
 
 
-class CreateCategory(models.Model):
-    model = Category
-    fields = ['category_name', 'image', 'description']
-
-
-class CategoryListView(models.Model):
-    model = Category
-
-
 class Product(models.Model):
     product_name = models.CharField(max_length=100)
     price = models.IntegerField()
     quantity = models.CharField(max_length=100)
+    description = models.TextField(max_length=500)
     category = models.ForeignKey(Category)
     image = models.ImageField(upload_to='media/products')
 
@@ -44,30 +36,12 @@ class Product(models.Model):
         return img
 
 
-class CreateProduct(models.Model):
-    model = Product
-    fields = ['product_name', 'price', 'quantity', ' category', 'image']
-
-
-class ProductListView(models.Model):
-    model = Product
-
-
 class ProductImage(models.Model):
     product_id = models.ForeignKey(Product)
     img = models.ImageField(upload_to='media')
 
     def __str__(self):
         return str(self.product_id)
-
-
-class CreateProductImage(models.Model):
-    model = ProductImage
-    fields = ['product_id', 'img']
-
-
-class ProductImageList(models.Model):
-    model = ProductImage
 
 
 class ProductVariations(models.Model):
@@ -80,18 +54,27 @@ class ProductVariations(models.Model):
 
     def __unicode__(self):
         return str(self.product_type)
-#checking to return var price if sales price is not None
+
+    # checking to return var price if sales price is not None
     def get_price(self):
         if self.sales_price is not None:
             return self.sales_price
         else:
             return self.var_price
 
+    def get_absolute_url(self):
+        return self.product.get_absolute_url()
 
-class CreateProductVariations(models.Model):
-    model = ProductVariations
-    fields = ['product_type', 'var_name', 'var_price', ' sales_price', 'active']
-
-
-class ProductVariationsListView(models.Model):
-    model = ProductVariations
+# function that handles wat we are working on
+# def product_saved_reciever(sender, instance, created,
+#                            *args, **kwargs):
+#     product = instance
+#     productvariations = product.productvariations_set.all()
+#     if productvariations.count == 0:
+#         new_var = ProductVariations()
+#         new_var.product = product
+#         new_var.product_type = 'Default'
+#         new_var.var_price = product.price
+#         new_var.save()
+#
+# post_save.connect(product_saved_reciever,sender=Product)
