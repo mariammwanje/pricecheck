@@ -4,23 +4,28 @@ from django.db import models
 
 
 class Category(models.Model):
-    category_name = models.CharField(max_length=100)
-    description = models.TextField(max_length=300)
+    category_name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(null=True, blank=True)
     image = models.ImageField(upload_to="media/category")
+    active = models.BooleanField(default=True)
+    timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
     def __str__(self):
         return self.category_name
 
 
+
 class Product(models.Model):
     product_name = models.CharField(max_length=100)
     price = models.IntegerField()
-    quantity = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
-    category = models.ForeignKey(Category)
+    # category = models.ForeignKey(Category)
     image = models.ImageField(upload_to='media/products')
+    categories = models.ManyToManyField(Category)
+    default = models.ForeignKey('Category', related_name='default_category', null=True, blank=False)
+    active = models.BooleanField(default=True)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.product_name
 
     def get_price(self):
@@ -54,6 +59,9 @@ class ProductVariations(models.Model):
 
     def __unicode__(self):
         return str(self.product_type)
+
+    def get_var_name(self):
+        return self.get_var_name()
 
     # checking to return var price if sales price is not None
     def get_price(self):

@@ -12,7 +12,8 @@ from products.models import Product, Category, ProductVariations, ProductImage
 
 class CreateProductView(CreateView):
     model = Product
-    fields = ['product_name', 'price', 'quantity','description', ' category', 'image']
+    fields = ['product_name', 'price', 'categories', 'description', 'category', 'image', 'default', 'active']
+
     success_url = reverse_lazy("products:products_landing")
     template_name = 'products/create_products'
 
@@ -52,21 +53,35 @@ class CreateProductImage(CreateView):
 
 class ProductImageList(ListView):
     model = ProductImage
-    fields = ['product_id', 'img']
 
 
 class CreateCategoryView(CreateView):
     model = Category
-    fields = ['category_name', 'description', 'image']
+    fields = ['category_name', 'image', 'description', 'active', 'timestamp']
+
     success_url = reverse_lazy("products:category_landing")
     template_name = 'products/create_category.html'
 
 
 class CategoryListView(ListView):
     model = Category
-    fields = ['category_name', 'description', 'image']
-    success_url = reverse_lazy("products:category_landing")
     template_name = 'products/category_landing.html'
+    queryset = Category.objects.all()
+
+    def get_queryset(self, *args, **kwargs):
+        category_data = super(CategoryListView, self).get_queryset(*args, **kwargs)
+        q = self.request.GET.get('search_category')
+        if q:
+            category_data = self.model.objects.filter(
+                Q(category_name__icontains=q)
+            )
+            return category_data
+        return category_data
+
+    def get_context_data(self, **kwargs):
+        context = super(CategoryListView, self).get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
 
 
 class CreateProductVariations(CreateView):

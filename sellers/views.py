@@ -89,7 +89,7 @@ class ListSellerProductView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         sellerproduct_data = super(ListSellerProductView, self).get_queryset(*args, **kwargs)
-        q = self.request.GET.get('search_seller')
+        q = self.request.GET.get('search_sellerproduct')
         if q:
             sellerproduct_data = self.model.objects.filter(
                 Q(name_product__product_name__icontains=q)|

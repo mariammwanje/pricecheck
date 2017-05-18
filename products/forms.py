@@ -8,18 +8,19 @@ from products.models import Product, Category, ProductVariations, ProductImage
 class ProductForm(forms.Model):
     class Meta:
         product_name = forms.CharField(max_length=100)
-        price = forms.IntegerField()
-        quantity = forms.CharField(max_length=20)
+        price =forms.IntegerField()
         description = forms.TextField(max_length=500)
-
-        category = forms.ForeignKey(Category)
-        image = forms.ImageField(upload_to='media/products', default=1)
+        # category = forms.ForeignKey(Category)
+        image = forms.ImageField(upload_to='media/products')
+        categories = forms.ManyToManyField(Category)
+        default = forms.ForeignKey('Category', related_name='default_category', null=True, blank=False)
+        active = forms.BooleanField(default=True)
 
 
 class ProductCreateForm(forms.Model):
     class Meta:
         model = Product
-        fields = ['product_name', 'price', 'quantity', 'description', 'category', 'image']
+        fields = ['product_name', 'price', 'categories', 'description', 'category', 'image','default','active']
 
 
 class ProductListViewForm(forms.ModelForm):
@@ -46,16 +47,17 @@ class ProductImageListForm(forms.Model):
 
 class CategoryForm(forms.ModelForm):
     class Meta:
-        category_name = forms.CharField(max_length=100)
-        description = forms.TextField(max_length=300)
+        category_name = forms.CharField(max_length=100, unique=True)
+        description = forms.TextField(null=True, blank=True)
         image = forms.ImageField(upload_to="media/category")
+        active = forms.BooleanField(default=True)
+        timestamp = forms.DateTimeField(auto_now_add=True, auto_now=False)
 
 
 class CreateCategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        fields = ['category_name', 'image', 'description']
-
+        fields = ['category_name', 'image', 'description','active','timestamp']
 
 class CategoryListViewForm(forms.ModelForm):
     class Meta:

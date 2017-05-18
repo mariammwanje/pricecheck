@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-from products.models import Product, ProductVariations
+from products.models import Product
 
 
 # Create your models here.
