@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^products/', include('products.urls', namespace='products')),
     url(r'^sellers/', include('sellers.urls', namespace='sellers')),
-    # url(r'^categories/', include('products.category_urls', namespace='products')),
+    url(r'^cart/', include('cart.urls', namespace='cart')),
 
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 

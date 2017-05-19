@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from idlelib import autocomplete
+
 from django import forms
 
 from products.models import Product, Category, ProductVariations, ProductImage
@@ -16,11 +18,20 @@ class ProductForm(forms.Model):
         default = forms.ForeignKey('Category', related_name='default_category', null=True, blank=False)
         active = forms.BooleanField(default=True)
 
+# class PersonForm(forms.ModelForm):
+#     product = forms.ModelChoiceField(
+#         queryset=Product.objects.all(),
+#         widget=autocomplete.ModelSelect2(url='product-autocomplete')
+#     )
+#
+#     class Meta:
+#         model = Product
+#         fields = ('__all__')
 
 class ProductCreateForm(forms.Model):
     class Meta:
         model = Product
-        fields = ['product_name', 'price', 'categories', 'description', 'category', 'image','default','active']
+        fields = ['product_name', 'price', 'categories', 'description', 'image','default','active']
 
 
 class ProductListViewForm(forms.ModelForm):

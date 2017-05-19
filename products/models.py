@@ -10,7 +10,7 @@ class Category(models.Model):
     active = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.category_name
 
     def get_absolute_url(self):
@@ -28,7 +28,7 @@ class Product(models.Model):
     default = models.ForeignKey('Category', related_name='default_category', null=True, blank=False)
     active = models.BooleanField(default=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.product_name
 
     def get_price(self):
@@ -60,11 +60,11 @@ class ProductVariations(models.Model):
 
     active = models.BooleanField(default=True)
 
-    def __unicode__(self):
-        return str(self.product_type)
+    def __str__(self):
+        return str(self.var_name)
 
-    def get_var_name(self):
-        return self.get_var_name()
+    def get_product_type(self):
+        return self.get_product_type()
 
     # checking to return var price if sales price is not None
     def get_price(self):
