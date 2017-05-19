@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'products',
     'accounts',
     'sellers',
+    'cart',
     'bootstrap3',
     'django.contrib.sites',
     'allauth',
