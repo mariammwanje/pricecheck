@@ -20,7 +20,6 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from pricecheck import views
-# from pricecheck.views import HomeView
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
@@ -28,7 +27,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^products/', include('products.urls', namespace='products')),
     url(r'^sellers/', include('sellers.urls', namespace='sellers')),
-    url(r'^cart/', include('cart.urls', namespace='cart')),
 
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 
