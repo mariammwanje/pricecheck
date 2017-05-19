@@ -65,7 +65,7 @@
 
                 <p> {{ category.description}}
                 </p>
-                <a href="#" class="btn btn-success" align="pull-right"
+                <a href="{% url 'products:category_details' category.pk %}" class="btn btn-success" align="pull-right"
                    role="button"><span class="glyphicon glyphicon-plus"></span> More Details</a>
 
             </div>

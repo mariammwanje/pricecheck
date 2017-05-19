@@ -62,6 +62,11 @@ class CreateCategoryView(CreateView):
     success_url = reverse_lazy("products:category_landing")
     template_name = 'products/create_category.html'
 
+class CategoryDetailView(DetailView):
+    model = Category
+    success_url = reverse_lazy("products:category_landing")
+    template_name = 'products/category_details.html'
+
 
 class CategoryListView(ListView):
     model = Category
@@ -94,4 +99,3 @@ class CreateProductVariations(CreateView):
 class ProductVariationsListView(ListView):
     model = ProductVariations
     template_name = 'products/product_variations_landing.html'
-

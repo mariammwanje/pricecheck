@@ -10,8 +10,11 @@ class Category(models.Model):
     active = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.category_name
+
+    def get_absolute_url(self):
+        return reverse("category_details")
 
 
 

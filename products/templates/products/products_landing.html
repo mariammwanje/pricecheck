@@ -37,6 +37,7 @@
                         <li><a href="{% url 'products:product_variations_landing' %}">PRODUCT VARIATIONS</a></li>
 
                         <li><a href="{% url 'products:category_landing' %}">PRODUCT CATEGORIES </a></li>
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <form id="searchbox" method="get"
@@ -53,26 +54,28 @@
         </nav>
 
         {% for product in object_list %}
-            <div class="col-xs-6 col-md-3">
-                <div class="thumbnail">
-                    <div class="caption">
+            <div class="col-xs-2">
+                <div class="thumbnail text-center">
+                    <div class="caption" >
                         <a href="#">
                             <img class='img-responsive' src="{{ product.image.url }}" width="150" height="113">
                         </a>
                     </div>
 
                     <h3>{{ product.product_name }}</h3>
-                    <h4> {{ product.description }}</h4>
+                    <h4> {{ product.price }}</h4>
 
                     </p>
-                    <h5>{{ product.category }}</h5>
-                    <a href="{% url 'products:products_details' product.pk %}" class="btn btn-success"
-                       align="pull-right"
-                       role="button"><span class="glyphicon glyphicon-send"></span> More Details</a>
+{#                    <h5>{{ product.category }}</h5>#}
+{#                    <a href="{% url 'products:products_details' product.pk %}" class="btn btn-success"#}
+{#                       align="pull-right"#}
+{#                       role="button"><span class="glyphicon glyphicon-send"></span> More Details</a>#}
                     {#                <a href="#" class="btn btn-success" role="button">More Details</a>#}
 
                 </div>
             </div>
+
+            {% cycle '' '' '' '' '</div><div class="row"> '%}
         {% endfor %}
 
     {% else %}
